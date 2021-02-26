@@ -1,0 +1,11 @@
+@value makerHeaderPink  from '../../common/colors.css';
+@value makerWhite  from '../../common/colors.css';
+
+.button {
+  background: makerHeaderPink;
+  border: 0;
+  outline: 0;
+  padding: 0.5em;
+  cursor: pointer;
+  color: makerWhite;
+}

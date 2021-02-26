@@ -1,0 +1,18 @@
+@value makerGreen from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
+
+.preview {
+  flex-basis: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+.title {
+  margin: 0.8em auto;
+  font-weight: bolder;
+  color: makerGreen;
+}
+.cardsList {
+  padding: 0 1rem;
+}

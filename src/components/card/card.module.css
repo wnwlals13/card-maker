@@ -1,0 +1,58 @@
+@value makerShadow from '../../common/colors.css';
+@value makerBlack from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
+@value makerHeaderPink from '../../common/colors.css';
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
+.card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  border-radius: 1em;
+  padding: 0.2em 0;
+  box-shadow: 6px 6px 8px 0px makerShadow;
+  max-width: 30rem;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 40%;
+  padding: 0.5em;
+  margin-right: 1em;
+}
+
+.info {
+  width: 45%;
+}
+
+.card.dark {
+  background-color: makerBlack;
+  color: white;
+}
+
+.card.light {
+  background-color: rgba(223, 223, 223, 0.447);
+}
+.card.colorful {
+  background: linear-gradient(
+    52deg,
+    rgba(110, 197, 198, 1) 0%,
+    rgba(202, 157, 255, 1) 100%
+  );
+}
+
+.card p,
+h1 {
+  margin: 5px 0;
+}
+
+.line {
+  width: 100%;
+  border: 1px solid makerWhite;
+}
+
+.line.light {
+  border: 1px solid black;
+}

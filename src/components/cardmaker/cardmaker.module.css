@@ -1,0 +1,27 @@
+@value makerWhite from '../../common/colors.css';
+@value makerGrey from '../../common/colors.css';
+@value mediaQuery from '../../common/size.css';
+
+.cardmaker {
+  width: 100%;
+  height: 95%;
+  margin: 0 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex: 1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .container {
+    flex-direction: column;
+  }
+}

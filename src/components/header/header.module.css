@@ -1,0 +1,41 @@
+@value makerLogin from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
+@value makerHeaderPink from '../../common/colors.css';
+
+.head {
+  height: 100px;
+  width: 100%;
+  background: makerHeaderPink;
+  color: makerWhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head.long {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.mainlogo {
+  display: block;
+  margin-top: 1rem;
+  width: 50px;
+}
+
+.mainlogo.long {
+  margin: 20px;
+}
+.serviceName {
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+
+.logoutBtn {
+  position: absolute;
+  
+}
+
+.head-card {
+}

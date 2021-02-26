@@ -1,0 +1,15 @@
+@value makerLogin from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
+
+.foot {
+  height: 50px;
+  background: makerLogin;
+  color: makerWhite;
+  line-height: 50px;
+  font-size: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.foot-card {
+}

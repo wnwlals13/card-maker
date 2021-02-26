@@ -1,0 +1,54 @@
+@value makerLogin from '../../common/colors.css';
+@value makerWhite from '../../common/colors.css';
+@value makerHeaderPink from '../../common/colors.css';
+
+.login {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.7rem;
+  background-color: makerWhite;
+  overflow: hidden;
+}
+
+/*body*/
+.loginBody {
+  background: makerWhite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 6%;
+}
+
+.loginGoogle,
+.loginGithub {
+  border: 0;
+  outline: 0;
+  margin: 0.5rem 2rem;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 200ms ease-in;
+}
+
+.loginGoogle:hover,
+.loginGithub:hover {
+  color: makerWhite;
+  background-color: makerHeaderPink;
+}
+
+.loginGoogle p,
+.loginGithub p {
+  padding: 0;
+  margin-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.google,
+.github {
+  width: 30px;
+}
