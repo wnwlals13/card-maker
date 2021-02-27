@@ -2,8 +2,7 @@ import React, { memo } from "react";
 import styles from "./header.module.css";
 
 const Header = memo(({ display, onLogout }) => {
-  const displayType = display === "list" ? styles.list : styles.grid;
-  console.log(displayType);
+  // const displayType = display === "list" ? styles.list : styles.grid;
   return (
     <header className={`${styles.head}`}>
       <img
@@ -12,9 +11,11 @@ const Header = memo(({ display, onLogout }) => {
         alt="logo"
       />
       <span className={styles.serviceName}>Business Card Maker</span>
-      <button className={styles.logoutBtn} onClick={onLogout}>
-        logout
-      </button>
+      {onLogout && (
+        <button className={styles.logoutBtn} onClick={onLogout}>
+          logout
+        </button>
+      )}
     </header>
   );
 });

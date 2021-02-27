@@ -1,7 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import styles from "./img_file_input.module.css";
 
-const ImgFileInput = ({ imgService, name, onFileChange }) => {
+const ImgFileInput = memo(({ imgService, name, onFileChange }) => {
   //✨ loading spinner - 처음에는 로딩스피너가 안도니까 기본값 : false
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();
@@ -38,6 +38,6 @@ const ImgFileInput = ({ imgService, name, onFileChange }) => {
       {loading && <div className={styles.loading}></div>}
     </div>
   );
-};
+});
 
 export default ImgFileInput;

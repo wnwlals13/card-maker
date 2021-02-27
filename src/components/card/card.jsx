@@ -1,26 +1,17 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "./card.module.css";
 
 const DEFAULT_IMG = "/images/basic.jpeg";
 const arrow = " >>>>>";
-const Card = ({ card }) => {
-  const {
-    name,
-    company,
-    title,
-    email,
-    message,
-    theme,
-    fileName,
-    fileURL,
-  } = card;
+const Card = memo(({ card }) => {
+  const { name, company, title, email, message, theme, fileURL } = card;
   const url = fileURL || DEFAULT_IMG; // ✨ fileURL이 있다면 그걸쓰고 없다면 DEFAULT_IMG를 쓴다.
   return (
     <li className={`${styles.card} ${pickStyles(theme)}`}>
       <img
         className={styles.avatar}
         src={process.env.PUBLIC_URL + url}
-        alt="profile photo"
+        alt="profile"
       />
       <div className={styles.info}>
         <h1 className={styles.name}>{name}</h1>
@@ -35,7 +26,7 @@ const Card = ({ card }) => {
       </div>
     </li>
   );
-};
+});
 
 //컴포넌트에 포함하지 않아도되는 함수이니까..
 function pickStyles(theme) {

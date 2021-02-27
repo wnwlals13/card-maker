@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import Button from "../button/button";
 import styles from "./card_add.module.css";
 
-const CardAdd = ({ FileInput, onAdd }) => {
+const CardAdd = memo(({ FileInput, onAdd }) => {
   const [updateFile, setUpdateFile] = useState({
     fileName: null,
     fileURL: null,
@@ -28,6 +28,7 @@ const CardAdd = ({ FileInput, onAdd }) => {
       fileURL: updateFile.fileURL || "",
     };
     formRef.current.reset();
+
     setUpdateFile({
       fileName: null,
       fileURL: null,
@@ -91,7 +92,7 @@ const CardAdd = ({ FileInput, onAdd }) => {
       <Button name="Add" onClick={onSubmit} />
     </form>
   );
-};
+});
 //✨ card add와 card edit은 FileInput에서 받아온 것을 살짝 다르게 처리한다.
 // card edit 은 qkedkdhs 파일을 바로 업로드하지만, card add는 state에 저장해놨다가
 // 사용자가 add를 누를 경우! 업로드 해야하기 때문이다.

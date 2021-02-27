@@ -58,3 +58,7 @@ h1 {
 .line.light {
   border: 1px solid black;
 }
+
+.message {
+  display: block;
+}

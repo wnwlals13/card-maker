@@ -2,10 +2,8 @@ import styles from "./app.module.css";
 import Login from "./components/login/login";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CardMaker from "./components/cardmaker/cardmaker";
-import { useState } from "react";
 
 function App({ FileInput, authService, dbService }) {
-  const [loginId, setLoginId] = useState([]);
   return (
     <div className={styles.app}>
       <BrowserRouter>

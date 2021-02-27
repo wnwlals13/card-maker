@@ -79,9 +79,8 @@ const CardEdit = ({ FileInput, card, updateCard, deleteCard }) => {
         onChange={onChange}
         className={styles.textarea}
         name="message"
-      >
-        {message}
-      </textarea>
+        defaultValue={message}
+      ></textarea>
 
       <div className={styles.fileInput}>
         <FileInput name={fileName} onFileChange={onFileChange} />

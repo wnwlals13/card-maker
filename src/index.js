@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import ReactDOM from "react-dom";
 import "./index.module.css";
 import App from "./app";
@@ -10,9 +10,9 @@ import DBService from "./service/db_service";
 const authService = new Authentication();
 const dbService = new DBService();
 const imgService = new ImgService();
-const FileInput = (props) => (
+const FileInput = memo((props) => (
   <ImgFileInput {...props} imgService={imgService} />
-);
+));
 //✨ Component Props
 //컴포넌트를 외부에서 만들어서 전달할것! 이렇게 하지 않으면 계속 app-> cardmaker->editor
 //이렇게 전달해야된다. fileInput을 사용할 때 원하는 props을 전달하면 그 props를 imgFileInput 에 전달할 수 있다.

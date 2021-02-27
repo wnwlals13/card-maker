@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Editor from "../editor/editor";
 import Header from "../header/header";
@@ -6,15 +6,20 @@ import Preview from "../preview/preview";
 import styles from "./cardmaker.module.css";
 
 const CardMaker = ({ FileInput, authService, dbService }) => {
-  const historyState = useHistory().state;
+  const historyid = useHistory();
+  const historyState = historyid?.location?.state;
   const [cards, setCards] = useState({});
   const [userId, setUserId] = useState(historyState && historyState.id);
 
   const display = "long";
   const history = useHistory();
-  const onLogout = () => {
+
+  //✨danger ->한번 저장된 authService를 계속 사용하지 않도록!
+  // dependency list를 전달해야합니당 (authService)
+  // authService에 변화가 생긴다면 다시 콜백을 할거야
+  const onLogout = useCallback(() => {
     authService.logout();
-  };
+  }, [authService]);
   //👉getDB
   useEffect(() => {
     if (!userId) {
@@ -24,7 +29,7 @@ const CardMaker = ({ FileInput, authService, dbService }) => {
       setCards(cards);
     });
     return () => stopSync();
-  }, [userId]);
+  }, [userId, dbService]);
   //👉login
   //나는 바로then으로 이어줬는데, 쌤은 useEffect로 로그인상태 분별해서 해줌!
   //realtime database-> setUserID설정!
@@ -36,7 +41,7 @@ const CardMaker = ({ FileInput, authService, dbService }) => {
         history.push("/");
       }
     });
-  });
+  }, [authService, history]);
   // const addCard = (card) => {
   //   const update = [...cards, card];
   //   setCards(update);
