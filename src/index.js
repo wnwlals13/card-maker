@@ -5,8 +5,10 @@ import App from "./app";
 import Authentication from "./service/auth_service";
 import ImgService from "./service/img_service";
 import ImgFileInput from "./components/img_file_input/img_file_input";
+import DBService from "./service/db_service";
 
 const authService = new Authentication();
+const dbService = new DBService();
 const imgService = new ImgService();
 const FileInput = (props) => (
   <ImgFileInput {...props} imgService={imgService} />
@@ -20,7 +22,11 @@ const FileInput = (props) => (
 
 ReactDOM.render(
   <React.StrictMode>
-    <App authService={authService} FileInput={FileInput} />
+    <App
+      authService={authService}
+      FileInput={FileInput}
+      dbService={dbService}
+    />
   </React.StrictMode>,
   document.getElementById("root")
 );

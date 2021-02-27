@@ -5,57 +5,38 @@ import Header from "../header/header";
 import Preview from "../preview/preview";
 import styles from "./cardmaker.module.css";
 
-const CardMaker = ({ FileInput, authService }) => {
-  const [cards, setCards] = useState({
-    1: {
-      id: "1",
-      name: "hong",
-      company: "Saumsung",
-      title: "hello🥰",
-      theme: "colorful",
-      email: "hong@naver.com",
-      message: "go for it",
-      fileName: "jimin",
-      fileURL: null,
-    },
-    2: {
-      id: "2",
-      name: "jimin",
-      company: "danggunCompany",
-      theme: "dark",
-      title: "hello🥰",
-      email: "jimin@naver.com",
-      message: "go for it",
-      fileName: "jimin",
-      fileURL: null,
-    },
-    3: {
-      id: "3",
-      name: "kin",
-      company: "SSK",
-      theme: "light",
-      title: "hello🥰",
-      email: "kim@naver.com",
-      message: "go for it",
-      fileName: "jimin",
-      fileURL: null,
-    },
-  });
+const CardMaker = ({ FileInput, authService, dbService }) => {
+  const historyState = useHistory().state;
+  const [cards, setCards] = useState({});
+  const [userId, setUserId] = useState(historyState && historyState.id);
 
   const display = "long";
   const history = useHistory();
   const onLogout = () => {
     authService.logout();
   };
+  //👉getDB
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const stopSync = dbService.syncCard(userId, (cards) => {
+      setCards(cards);
+    });
+    return () => stopSync();
+  }, [userId]);
+  //👉login
   //나는 바로then으로 이어줬는데, 쌤은 useEffect로 로그인상태 분별해서 해줌!
+  //realtime database-> setUserID설정!
   useEffect(() => {
     authService.onAuthChange((user) => {
-      if (!user) {
+      if (user) {
+        setUserId(user.uid);
+      } else {
         history.push("/");
       }
     });
   });
-
   // const addCard = (card) => {
   //   const update = [...cards, card];
   //   setCards(update);
@@ -67,6 +48,7 @@ const CardMaker = ({ FileInput, authService }) => {
       update[card.id] = card;
       return update;
     });
+    dbService.saveCard(userId, card);
   };
   const deleteCard = (card) => {
     setCards((cards) => {
@@ -74,6 +56,7 @@ const CardMaker = ({ FileInput, authService }) => {
       delete update[card.id];
       return update;
     });
+    dbService.removeCard(userId, card);
   };
   return (
     <section className={styles.cardmaker}>

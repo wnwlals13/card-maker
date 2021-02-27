@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CardMaker from "./components/cardmaker/cardmaker";
 import { useState } from "react";
 
-function App({ FileInput, authService }) {
+function App({ FileInput, authService, dbService }) {
   const [loginId, setLoginId] = useState([]);
   return (
     <div className={styles.app}>
@@ -14,7 +14,11 @@ function App({ FileInput, authService }) {
             <Login authService={authService} />
           </Route>
           <Route path="/card">
-            <CardMaker FileInput={FileInput} authService={authService} />
+            <CardMaker
+              FileInput={FileInput}
+              authService={authService}
+              dbService={dbService}
+            />
           </Route>
         </Switch>
       </BrowserRouter>

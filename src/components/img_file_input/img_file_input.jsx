@@ -13,7 +13,7 @@ const ImgFileInput = ({ imgService, name, onFileChange }) => {
     setLoading(true); //파일이 변경될 때 loading
     const uploaded = await imgService.uploadImg(event.target.files[0]);
     setLoading(false);
-    console.log(uploaded); //✨이렇게 받아옴!
+    // console.log(uploaded); //✨이렇게 받아옴!
     onFileChange({ name: uploaded.original_filename, url: uploaded.url });
   };
 
