@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../button/button";
-import ImgFileInput from "../img_file_input/img_file_input";
-
 import styles from "./card_add.module.css";
 
-const CardAdd = ({ onAdd }) => {
+const CardAdd = ({ FileInput, onAdd }) => {
+  const [updateFile, setUpdateFile] = useState({
+    fileName: null,
+    fileURL: null,
+  });
   const formRef = useRef();
   const nameRef = useRef();
   const companyRef = useRef();
@@ -22,11 +24,19 @@ const CardAdd = ({ onAdd }) => {
       title: titleRef.current.value || "",
       email: emailRef.current.value || "",
       message: messageRef.current.value || "",
-      fileName: "",
-      fileURL: "",
+      fileName: updateFile.fileName || "",
+      fileURL: updateFile.fileURL || "",
     };
     formRef.current.reset();
+    setUpdateFile({
+      fileName: null,
+      fileURL: null,
+    }); //초기화
     onAdd(card);
+  };
+
+  const onFileChange = (file) => {
+    setUpdateFile({ fileName: file.name, fileURL: file.url });
   };
   return (
     <form ref={formRef} className={styles.cardInfo}>
@@ -76,11 +86,13 @@ const CardAdd = ({ onAdd }) => {
       ></textarea>
 
       <div className={styles.fileInput}>
-        <ImgFileInput />
+        <FileInput name={updateFile.fileName} onFileChange={onFileChange} />
       </div>
       <Button name="Add" onClick={onSubmit} />
     </form>
   );
 };
-
+//✨ card add와 card edit은 FileInput에서 받아온 것을 살짝 다르게 처리한다.
+// card edit 은 qkedkdhs 파일을 바로 업로드하지만, card add는 state에 저장해놨다가
+// 사용자가 add를 누를 경우! 업로드 해야하기 때문이다.
 export default CardAdd;

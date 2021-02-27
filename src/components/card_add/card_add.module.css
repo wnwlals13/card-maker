@@ -10,11 +10,6 @@
   margin-bottom: 1em;
 }
 
-.fileInput {
-  padding: 0;
-  flex: 1 1 50%;
-}
-
 .input,
 .textarea,
 .select,
@@ -44,4 +39,9 @@
 .select:focus,
 .button:focus {
   outline: 0;
+}
+
+.fileInput {
+  padding: 0;
+  flex: 1 1 50%;
 }

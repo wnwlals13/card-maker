@@ -5,6 +5,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 
 .card {
+  height: 200px;
   display: flex;
   align-items: center;
   margin-bottom: 0.5em;
@@ -19,7 +20,8 @@
 .avatar {
   border-radius: 50%;
   width: 40%;
-  padding: 0.5em;
+  height: 90%;
+  padding: 1em 0.5em;
   margin-right: 1em;
 }
 
